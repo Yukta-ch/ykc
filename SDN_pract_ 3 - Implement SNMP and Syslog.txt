@@ -1,0 +1,63 @@
+Aim :- Implement SNMP and Syslog
+
+Draw diagram
+step 1- one machine(PC)
+step 2- one switch(2960)
+step 3- two routers(1841)
+all connections are connected with black copper wire
+wait for some time converted to the green all connections
+all connection green then check me check the ip addresses
+
+
+in diagram click on pc0-------->then click on desktop 
+click on static
+write  as follow
+ipv4 address------->172.168.1.2
+subnet mask--------->255.255.255.0
+default gateway--------->172.168.1.1
+then close 
+
+
+in diagram click  on R1------->click on config------>click on fast ethernet0/0
+write as follows
+ipv4 address------->172.168.1.1
+subnet mask-------->255.255.0.0
+then click on
+then close
+
+in diagram click  on R2------->click on config------>click on fast ethernet0/0
+write as follows
+ipv4 address------->172.168.2.1
+subnet mask-------->255.255.0.0
+then click on 
+then close
+
+show that all connection green
+wait for some time
+then check packet receive or not(i.e successful/failed)
+
+
+#now open R1------->go to the CLI
+write commands as follows
+exit
+snmp-server community read ro
+snmp-server ?
+snmp-server community ?
+snmp-server community read ?
+snmp-server community read ro
+snmp-server community write rw
+
+
+let me check PC1
+go to the pc1------>click on desktop------->click on MIB
+Address------->172.168.1.1
+then click on Go--------->then click ok
+then click on advanced:-
+read community-- read
+write community-- write
+then click on ok
+click MIB trees------->click on 1st option(router_std MBS)------>click on .iso----->click on org----->click on .dod----->click on .internet----->click on .mgmt---->click on .mb2---->
+click on .system----->click  on .systemname------click on cancel----->finally click on cancel on pc1
+ 
+
+

@@ -1,0 +1,107 @@
+Aim:- Observe STP Topology Changes and Implement RSTP
+1. Implement Advanced STP Modifications and Mechanisms
+2. Implement MST
+
+
+draw diagram:-
+Multilayer Switch0 :-D1
+Multilayer Switch1 :- D2
+Switch0 :- A1
+
+
+click on switch D1(in  diagram)-------->go to the physical-------->drag to the power port  here----->i.e power is on
+click on switch D2(in  diagram)-------->go to the physical-------->drag to the power port  here----->i.e power is on
+
+go to the D1(in diagram)---->go to the CLI
+no
+en
+conf t
+hostname D1
+spanning tree mode ?
+spanning tree mode pvst
+banner mode # D1, STP Topology Change and RSTP Lab #
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+int range g1/0/1-24,g1/1/1-4,g0/0
+int range g1/0/1-24
+shutdown
+int range g1/0/1,g1/0/5-6
+switchport mode trunk
+no shutdown
+switchport mode trunk
+exit
+vlan 2
+name SecondVLAN
+exit
+int vlan 1
+ip address 10.0.0.1 255.0.0.0
+no shutdown
+exit
+
+
+go to the D2(in diagram)---->go to the CLI
+no 
+en 
+conf t
+hostname D2
+banner motd # D2, STP Topology Change and RSTP Lab #
+spanning tree mode pvst
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+int range g1/0/1,g1/0/5-6
+switchport mode trunk
+no shutdown
+exit
+vlan 2
+name SecondVLAN
+exit
+int vlan 1
+ip address 10.0.0.2 255.0.0.0
+no shutdown
+exit
+
+
+go to the A1(in diagram)---->go to the CLI
+en 
+conf t
+hostname A1
+banner motd # A1, STP Topology Change and RSTP Lab #
+spanning tree mode pvst
+line con 0
+exec-timeout 0 0
+logging synchronous
+exit
+int range f0/1-24,g0/1-2
+shutdown
+int f0/1-4
+exit
+int range f0/1-4
+switchport mode trunk
+no shutdown
+exit
+vlan 2
+name SecondVLAN
+exit
+int vlan 1
+ip address 10.0.0.3 255.0.0.0
+no shutdown 
+exit
+end
+show ip int br
+show spanning-tree
+show version | include MAC
+
+
+ go to the D1(in diagram)---->go to the CLI
+end
+show spanning-tree active
+
+
+go to the D2(in diagram)---->go to the CLI
+end
+show spanning-tree active
+

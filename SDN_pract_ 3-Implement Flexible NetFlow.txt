@@ -1,0 +1,90 @@
+Aim ;- Implement Flexible NetFlow
+
+Draw diagram
+step 1 ;- one server(server-PT)
+step 2 :- one router(1841)
+step 3 :- one switch(2960)
+step 4 :- one machine(pc-pt)
+connected with dotted black copper wire
+wait for some time to till all connections shows green
+
+click on pc0(in diagram)------>click on configuration----->click on desktop----->click on static
+write as follows
+ipv4 address -->  30.0.0.2
+subnet mask --> 255.0.0.0
+default gateway --> 30.0.0.1
+click on close
+
+click on R1(in diagram)------>click on config----> click on fastEthernet0/0
+ipv4 address --> 10.0.0.1
+subnet mask --> 255.0.0.0
+click the option 'on'-------->click on close
+
+click on server0(in diagram)--------->click on desktop------>click on ip configuration
+click on static
+write as follows:-
+ipv4 address -->10.0.0.2
+subnet mask -->255.0.0.0
+default gateway --> 10.0.0.1
+then click on close button
+
+
+click on R1(in diagram)------>click on config------>click on fastethernet0/0
+write as follows:-
+ipv4 address --> 30.0.0.1
+subnet mask --> 255.0.0.1
+click on close
+wait for some time till all connections green
+
+
+go to the R1(in diagram)------>go to the CLI 
+write command as follow:- 
+exit
+service timestamp log datetime msec
+int f0/0.1
+
+
+go to the server0(in diagram)----->open services----->syslog----->make it 'on'
+
+go to the R1(in diagram)------->click on CLI
+exit
+int f0/1.1
+
+let me check on reflect or not  in server0
+
+
+go to the R1(in diagram)------->click on CLI
+exit
+int f0/0.1
+
+again check information reflect or not in server0(i.e information reflect)
+
+go to the R1(in diagram)------>click on config------>click on RIP
+network=10.0.0.0
+click on add
+network=30.0.0.0
+click on add
+
+check again
+click on R1(in diagram)------->click on CLI
+exit
+int f0/0.1
+
+
+click on R1(in diagram)------->click on CLI
+int f0/0
+ip flow  ingress
+ip flow igress
+ip flow-export destination 10.0.0.2 99
+ip flow-export source f0/0
+end
+show ip cache flow
+
+
+
+
+
+
+
+
+

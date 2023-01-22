@@ -1,0 +1,30 @@
+
+
+Draw diagram
+step 1 - two machine
+step 2 - one switch
+both are connected with black copper wire
+wait for some time
+all connections should be display in green colour
+check whether packet pass through or not
+
+
+# lets start configuring machine switch 0
+#for switch0
+------>click on switch0------>go to the CLI
+write commands as follows
+---------->
+en 
+conf t
+monitor session 1 source f0/1       ..........................(error)
+monitor session 1 source int f0/1
+monitor session 1 destination int f0/2
+show monitor 1      ......................(error)
+show monitor session 1      ..............................(error)
+end
+show monitor session 1 
+show monitor detail
+
+
+
+

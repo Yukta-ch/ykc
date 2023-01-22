@@ -1,0 +1,129 @@
+
+go to the s1(in diagram)------>go to the CLI command
+write commands as follows:-
+en
+conf t
+hostname s1
+int range g0/1-2,f0/21-22
+switchport mode trunk
+switchport nonegotiate
+
+
+go to the s2(in diagram)------->go to the CLI command
+write commands as follows:-
+en
+conf t
+hostname s2
+int range f0/23-24,g0/1-2
+switchport mode trunk
+switchport nonegotiate
+
+
+go to the s3(in diagram)------->go to the CLI command
+write commands as follows:-
+en
+conf t
+hostname s3
+int range f0/21-24
+switchport mode trunk
+switchport ?
+switchport nonegotiate
+exit
+
+
+go to the s1(in diagram)-------->go to the CLI command
+show int trunk
+
+so i require PAgP,LACP,Negotiated LACP
+then just write label in the diagram
+
+go to the s1(in diagram)--------->go to the CLI command
+en 
+conf t
+interface range f0/21-22
+shutdown
+channel-group 1 mode 
+mode desirable
+no shutdown
+exit
+
+
+go to the s3(in diagram)--------->go to the CLI command
+en 
+conf t
+int range f0/21-22
+shutdown
+channel-group 1 mode desirable
+no shutdown
+exit
+
+
+go to the s1(in diagram)--------->go to the CLI command
+interface port-channel 1
+switchport mode trunk
+exit
+
+
+go to the s3(in diagram)--------->go to the CLI command
+hostname s3
+interface port-channel 1
+switchport mode trunk
+exit
+
+
+go to the s1(in diagram)--------->go to the CLI command
+show etherchannel summary
+en
+conf t
+interface range g0/1-2
+shutdown
+channel-group 2 mode active
+no shutdown
+
+
+go to the s2(in diagram)--------->go to the CLI command
+show etherchannel summary
+en
+conf t
+interface range g0/1-2
+shutdown
+channel-group 2 mode active
+no shutdown
+exit
+
+
+go to the s1(in diagram)--------->go to the CLI command
+exit
+interface port-channel 2
+switchport mode trunk
+exit
+end
+show etherchannel summary
+show spanning-tree active 
+
+go to the s2(in diagram)--------->go to the CLI command
+exit
+interface port-channel 2
+switchport mode trunk
+exit
+interface range f0/23-24
+shutdown
+channel-group 3 mode passive
+no shutdown
+exit
+interface port-channel 3
+switchport mode trunk
+end
+show etherchannel summary
+
+
+go to the s3(in diagram)--------->go to the CLI command
+interface range f0/23-24
+shutdown
+channel-group 3 mode passive
+no shutdown
+exit
+interface port-channel 3
+switchport mode trunk
+exit
+
