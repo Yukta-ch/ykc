@@ -1,0 +1,154 @@
+Theory:- 
+Configuring basic Access Point (AP) settings involves setting up the essential parameters to enable wireless communication in a network.
+Let's break down the idea of "Configuring Basic AP Settings":
+
+1. Configuring:
+   - "Configuring" means setting up or adjusting things to make them work the way you want.
+
+2. Basic AP Settings:
+   - "AP" stands for Access Point. It's like a hub that allows devices to connect to a network, usually Wi-Fi. 
+   - "Basic settings" are the fundamental options you can adjust.
+
+3. Putting it Together:
+   - "Configuring Basic AP Settings" is like setting up the fundamental options on a Wi-Fi hub (Access Point) to make it work the way you need it to.
+
+In simpler terms, it's about adjusting the basic options on your Wi-Fi hub so that devices can connect to the internet or a network smoothly. 
+
+It's like choosing the essential settings to make your Wi-Fi work correctly.
+
+Practical 07: - Configuring Basic Ap Settings.
+
+1.Click on Network Devices click on wireless Devices Take 2 Accesspoint-PT.
+(Accesspoint0, Accesspoint1)
+
+2. Double click on Accesspoint0 configport 1
+Click on the checkbox.
+SSTD: CS	(because I need to define 2 network)
+Authentication: WPA2-PSK 
+psk pass phrase: ciscopacket1
+
+3. Double click on Accesspoint1→ configport 1
+Click on the checkbox.
+SSTD: IT  (because I need to define 2 network)
+Authentication: WPA2-PSK 
+psk pass phrase: ciscopacket2
+
+4. Click on End Devices Take 4 PC-PT'S i.e. PC0, PC1, PC2, PC3
+
+5. Click on PC0 Desktop IP configurationStatic
+IP address: 192.168.1.2
+Subnet Mask: 255.255.255.0 (Automatically generated)
+Default Gateway: 192.168.1.1
+
+6. Click on PC1 Desktop IP configurationStatic
+IP address: 192.168.1.3
+Subnet Mask: 255.255.255.0 (Automatically generated)
+Default Gateway: 192.168.1.1
+
+7. Click on PC2 Desktop IP configurationStatic
+IP address: 171.16.10.2
+Subnet Mask: 255.255.0.0 (Automatically generated)
+Default Gateway: 171.16.10.1
+
+8. Click on PC3 Desktop IP configurationStatic
+IP address: 171.16.10.3
+Subnet Mask: 255.255.0.0 (Automatically generated)
+Default Gateway: 171.16.10.1
+
+9. All the PC's has the wired connection. So, Convert it into wireless connection.
+Click PC0 physical power off→remove wired component with wireless component power on.
+
+10. Do same step 9. for PC1, PC2, PC3
+
+11. Accesspoint-PT0 → Labled Accesspoint-PT CS 
+Accesspoint - PT1 Labled Accesspoint-PT IT
+PC-PT PC0 Labled PC-PT CS-1 
+PC-PT PC1 Labled PC-PT CS-2 
+PC-PT PC2 Labled PC-PT IT-1 
+PC-PT PC3 Labled PC-PT IT-2 
+
+12. Click on CS-1 config Wireless0SSID: CS
+Authentication: WPA2-PSK 
+psk Pass phrase: ciscopacket1
+
+13. Click on CS-2 config Wireless0SSID: CS
+Authentication: WPA2-PSK 
+psk Pass phrase: ciscopacket1
+ 
+14. Click on IT-1 config Wireless0SSID: IT
+Authentication: WPA2-PSK 
+psk Pass phrase: ciscopacket2
+15. Click on IT-2 config Wireless0SSID: IT
+Authentication: WPA2-PSK 
+psk Pass phrase: ciscopacket2
+
+16. Click on Miscellaneous Take two 1841 Routers (Router0, Router 1) 
+
+17. Connect 1841 Router 0 to 1841 Router1 serially.
+connection → select serial DTE
+Router0 Serial 0/0/0 to Router1 Serial 0/0/0
+
+18. Click on Router0 config serial 0/0/0
+Click on the checkbox.
+Clock Rate: 64000
+IP Address: 20.0.0.1
+Subnet Mask: 255.0.0.0 (Automatically generated)
+
+19. Click on Router1 config serial 0/0/0
+Click on the checkbox.
+Clock Rate: 64000
+IP Address: 20.0.0.2
+Subnet Mask: 255.0.0.0 (Automatically generated)
+
+20. Connect Router & Accesspoint. 
+Connectionchoose copper cross-over 
+Router0 FastEthernet 0/0 to Accesspoint0 (CS) port0 
+
+21. Click on Router0 config → Fast Ethernet 0/0
+Click on the checkbox.
+IP Address: 192.168.1.1
+Subnet Mask: 255.255.255.0 (Automatically generated)
+
+22. Connectionchoose copper cross-over 
+Router1 FastEthernet 0/0 to Accesspoint1 (IT) port0 
+
+23. Click on Router1 config → Fast Ethernet 0/0
+Click on the checkbox.
+IP Address: 171.16.10.1
+Subnet Mask: 255.255.0.0 (Automatically generated)
+
+24. Click on Router0 config RIP CLI
+# version 2 →enter.
+
+25. Router0 → Config RIP →
+Network: 20.0.0.0 Add
+ : 192.168.1.0 Add.
+
+26. CS-1 (PC0)→ Desktop → IP ConfigurationStatic
+IP Address: 192.168.1.3
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+
+27. CS-2 (PC1)→ Desktop → IP ConfigurationStatic
+IP Address: 192.168.1.4
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.1.1
+
+28. IT-1 (PC2)→ Desktop → IP ConfigurationStatic
+IP Address: 171.16.10.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 171.16.10.1
+
+ 29. IT-2 (PC3)→ Desktop → IP ConfigurationStatic
+IP Address: 171.16.10.3
+Subnet Mask: 255.255.255.0
+Default Gateway: 171.16.10.1
+
+30. Click on Router1 config RIP CLI
+# version 2 →enter.
+
+31. Router1 → Config RIP →
+Network: 171.16.10.0Add
+  : 20.0.0.0 Add
+32.Drop PDU
+
