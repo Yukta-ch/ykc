@@ -1,0 +1,51 @@
+# Perform Reshaping ofthe hierarchical data and pivoting data frame data.
+# install.packages("tidyverse", type="source")
+
+library("tidyverse")
+head(billboard)
+
+
+#pivot longer(): Pivot data from wide to long
+
+billboard_long <- billboard |> pivot_longer(cols = starts_with('wk'),names_to = 'week',values_to = 'rank')
+billboard_long
+
+#pivot wider(): Pivot data from long to wide
+
+billboard_long |> pivot_wider(names_from = week,values_from = rank)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+background information:
+
+Pivoting data refers to the process ofreorganizing and reshaping data to analyze it from adifferent perspective.
+This transformation is often necessary to make the data more suitable for analysis, reporting, or visualization. 
+The specific steps involved in pivoting data may vary depending on the tools or programming languages used, but the general idea is to convert
+data from a long format to a wide formnat or vice versa. Herc arc two common types of data pivoting:
+
+1. Wide to Long (Unpivoting):
+This type of pivoting involves transforming wide-format data into along-format.
+
+2. Long to Wide (Pivoting):
+This type of pivoting involves transforming long-format data into a wide-format.
+
+

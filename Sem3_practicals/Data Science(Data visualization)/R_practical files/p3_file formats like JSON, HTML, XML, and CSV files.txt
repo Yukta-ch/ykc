@@ -1,0 +1,74 @@
+#Write a code to read data from the different file formats like JSON, HTML, XML, and CSV files and check for missing data and outlier values and handle them.
+
+# Load the required librarics
+library("rjson")
+library("XML")
+
+# Read data from JSON file
+json_data <-fromJSON("File Path")
+
+# Read data from HTML file
+html_data <- readHTMLTable("File Path")
+
+# Read data from XML filed
+xml_data<- xmlParse(" File Path")
+Xml_data <- xmlToList(xml_data)
+
+# Rcad data from CSV file
+csv_data <- read.csv("File Path")
+
+# Check for missing data
+missing_data<- sapply(json_data, function(x) sum(is.na(x)))
+missing_data <- missing_data[missing_data >0]
+
+# Check for outlier values
+outlier_data<- sapply(csv_data, function(x) sum(x < 0))
+outlier_data <- outlier_data[outlier_data > 0]
+
+# Handle missing data and outlier values
+json_data[is.na(json_data)] <- 0
+csv_data[csv_data < 0] <- 0
+
+# Print the data
+print(json_data)
+print(html_data)
+print(xml_data)
+print(csv_data)
+
+
+
+
+
+
+
+
+
+
+
+
+
+Background information:
+
+JSON:
+JSON (JavaScript Object Notation) is a lightweight data-interchange format. 
+It is easy for humans to rcad and write. 
+It is casy for machincs to parsc and gencratc. 
+JSON is a text format that is completely language independent but uses conventions that are familiar to programmers of the C-family of languages, including C, C++, C#, Java, JavaScript, Pcrl,Python, and many others. 
+These properties make JSON an ideal data-interchange language.
+
+HTML:
+HTML stands for HyperText Markup Language. 
+It creates a complete website structure of web pages. 
+HTML is a combination of Hypertext and Markup language. 
+Hypertext defines the link between the web pages and markup language defines the text document within the tag.
+
+XML:
+Extensible Markup Language (XML) is a markup language that provides rules to define any data. 
+Unlike other programming languages, XML cannot perforn computing operations by itself.
+
+csv:
+Comma-separated values (CSV) is a text file format that uses commas to separate values. 
+A CSV file stores tabular data (numbers and text) in plain text, where each line of the file typically represents one data record. 
+Each record consists of the same number of fields, and these are separated by commas in the CSV file.
+
+
