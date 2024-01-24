@@ -1,0 +1,80 @@
+Theory:-
+Creating an ad-hoc network, also known as a peer-to-peer network, allows devices to connect directly to each other without the need for a central wireless access point.
+Sure, let's simplify the concept of "Creating an Ad hoc Network":
+
+1. Ad hoc Network:
+   - An "Ad hoc Network" is like a temporary connection between devices. 
+   - It's not a permanent setup but something created on the spot for a specific need.
+
+2. Creating:
+   - "Creating" here means making or setting up. 
+   - So, we're talking about making a temporary connection between devices.
+
+3. Putting it Together:
+   - "Creating an Ad hoc Network" is like making a quick and temporary network between your devices when you need them to talk to each other directly, without needing a central router or internet connection.
+
+In simpler terms, it's like making a short-term connection between your devices when you want them to share information directly without going through the usual internet or Wi-Fi setup. 
+Imagine it as a direct link between your devices for a specific task.
+Practical 6: Creating an Ad hoc Network.
+
+1.Click on Network Devices → Click on Wireless Devices → Take 2 WRT300N wireless Routers (WRT300N Wireless Router0, WRT300N Wireless Router1)
+
+2.Connection: -
+Click on connection choose copper cross-over wire.
+Connect Wireless Router0 Ethernet 1 → Wireless Router1 Ethernet1
+
+3.Click on Wireless Router0 GUI  Click on Wireless
+Network Name (SSID): CS
+
+4. Click on Wireless Router0 → GUI Click on Wireless security→
+Security Mode: WPA2 Personal
+Passphrase: ciscorouter1
+click on Save settings
+
+5. Click on Wireless Router0 → GUI click on Administration.
+Remote Access: Remote Management:  Enabled (Click on Enabled.)
+click on Save settings.
+
+6. Similarly do same thing on Wireless Router1.
+Click on Wireless Router1GUIWireless → Basic Wireless settings.
+Network Name (SSID): IT
+
+7. Click on Wireless Router1 GUI Click on Wireless security→
+Security Mode: WPA2 personal
+Passpharse: ciscorouter2
+Click on Save Settings.
+
+8. Click on Wireless Router1 GUI Click on Administration.
+Remote Access: Remote Management:  Enabled (Click on Enabled.)
+click on Save settings.
+
+9. Check both wireless routers connected with each other or not by dropping PDU.
+
+10. Click m End devices → Take 5 PC-PT 
+(PC-PT) PC0, PC1, PC2, PC3, PC4.
+Connect machines (PC's) with wireless routers.
+
+11. Click on PC-PT PC0 power off remove wired component & attach wireless component power on button.
+Similarly, repeat this step for rest 4 machinesPC1, PC2, PC3, PC4.
+Now all PC’s have wireless devices.
+
+11. PC0 Desktop → PC wireless  Click on connect  Click on Refresh 
+get 2 wireless network Name: CS,IT
+Click on CS: Preshared key ciscorouter1click on connect.
+
+12. PC1→ Desktop PC wireless  Click on Connect  Click on Refresh.
+Click on IT: Preshared key ciscorouter2click on connect.
+
+13. PC2→ Desktop PC wireless  Click on Connect  Click on Refresh.
+Click on CS: Preshared key ciscorouter1click on connect.
+
+14. PC3→ Desktop PC wireless  Click on Connect  Click on Refresh.
+Click on CS: Preshared key ciscorouter1click on connect.
+
+15. PC4→ Desktop PC wireless  Click on Connect  Click on Refresh.
+Click on IT: Preshared key ciscorouter2click on connect.
+
+16. Wireless Router0 Lable CS 
+Wireless Router1 Lable IT 
+
+17. Drop PDU. Check interconnectivity & Connectivity between routers.
