@@ -1,0 +1,124 @@
+It's like putting a special lock on your Wi-Fi network.
+•	Only people who have the right key (like a special password) can unlock it and join your Wi-Fi.
+•	It's an older way of protecting your Wi-Fi, like using a chain lock on a door. It works, but it's not as strong as newer locks.
+
+WEP (Wired Equivalent Privacy) was once a common security protocol for Wi-Fi networks, aiming to provide encryption similar to wired networks. 
+
+However, it's important to know that WEP is outdated and considered insecure due to several vulnerabilities.
+
+What is WEP?
+
+•	WEP uses RC4 stream cipher for data encryption and a static key for authentication.
+•	It supports two key lengths: 40-bit and 128-bit (128-bit is more secure but less compatible with older devices).
+•	Requires manually configuring the same key on both the router and any device connecting to the network.
+
+WEP (Wired Equivalent Privacy) is an outdated and insecure wireless security protocol is highly vulnerable to security breaches, and it is strongly recommended to use more secure protocols like WPA2 or WPA3 if your devices support them.
+
+
+practical 1: - Configuring WEP on a Wireless Router.
+1. Start cisco packet tracer.
+
+2. Click on End devices Drag two pc's (PC-PT)
+
+3. Click on Hubs Switches Drag 2960 Switch (2960-24TT switch)
+
+4. Click on Miscellaneous  Drag two 1841 Routers
+
+5. Connect all machi pc, switch, router with each other. with copper straight - Through.
+
+6. Click on connections  Select copper straight- Through wire Click PC-PT PC0 (FastEthernet 0) to 2960-2477 Switch0 (FastEthernet 0/1)
+
+7. Connect switch0 FastEthernet 0/2 to Router0 FastEthernet 0/0.
+
+8 Connect PC1 FastEthernet0 to Switch1 FastEthernet 0/1
+
+9.Connect Switch Fast Ethernet 0/2 to Router1 FastEthernet 0/0
+
+10 connect two routers serially choose connection Serial DCE Wire 
+click on Router0 Serial 0/0/0 → Router1 Serial 0/0/0
+
+11.Now click on PC0 go to desktop click on
+IP configuration
+IP Address: 192.168.1.2
+Subnet Mask: 255.255.255.0 (Automatically generated)
+Default Gateway: 192.168.1.1
+
+12. Now click on PC1 go to desktop click on
+IP configuration
+IP Address: 192.168.2.2
+Subnet Mask: 255.255.255.0
+Default Gateway: 192.168.2.1
+
+13. Now click on Router0 go to config then go to FastEthernet0/0
+Click checkbox: On
+IP Address: 192.168.1.1
+Subnet Mask: 255.255.255.0
+
+14. Now click on Router1 go to config then go to FastEthernet 0/0
+Click checkbox: On
+IP Address: 192.168.2.1
+Subnet Mask: 255.255.255.0
+
+15.Click on Router0 go to config then go to Serial 0/0/0 
+Click checkbox: On
+clock Rate: 64000 (drop down and select)
+IP Address: 10.0.0.1
+Subnet Mask: 255.0.0.0
+
+16. Click on Router1 go to config then go to Serial 0/0/0
+Click checkbox: On
+clock Rate: 64000 (drop down and select)
+IP Address: 10.0.0.2
+Subnet Mask: 255.0.0.0
+
+17. Click on Router0 go to config click on RIPCLI
+# version 2 (write this command)
+Click on enter.
+Router0 config → RIP→
+(Give IP Address to network)
+
+Network: 10.0.0.0 Click on Add
+                 192.168.1.0  Click on Add
+
+18. Click on Router1 go to config Click on RIP →CLI
+# version 2(write this command)
+Click on enter.
+Router 1 → Config RIP →
+(Give IP Address to network)
+Network: 10.0.0.0 Click on Add
+                 192.168.2.0 Click on Add
+
+19. Click on Network Devices Wireless DevicesDrag one wireless Router0 (WRT300N)
+
+20. Connect Wireless Router0 with switch 0: - 
+go to connection choose copper-straight Through wire.
+click on switch0 FastEthernet 0/3 to Wireless router0 Ethernet 1
+
+21. Also connect Router0 & Wireless router0 with copper-straight through wire.
+Click on Router0 Fast Ethernet 0/1 to Wireless Router Ethernet 2
+
+22. Click on Router0 config → FastEthernet0/1 
+Click checkbox: On
+IP Address: 20.0.0.1
+Subnet Mask: 255.00.0
+
+23. Click Wireless Router0 GUI → Setup
+Network Setup: -
+Router IP IP Address: 192.168.1.1
+Click Save settings.
+
+24. click wireless Router0 GUI Wireless security
+Security Mode: Select WEP
+key: 2a2a2a2a2a
+Click on Save settings.
+
+25. Click on End devices Drag PC-PT PC2 → physical Power off machine replace it with wired peripheral with wireless peripheral & switch on the machine.
+
+26. PC2→ config Wireless0 → In Authentication
+Select: WEP 
+WEP key: 2a2a2a2a2a
+
+27. Click on Router0 →Config RIP→
+Network: 20.0.0.0 Click on Add 
+
+28. Drop PDU.
